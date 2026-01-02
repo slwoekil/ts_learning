@@ -22,6 +22,7 @@ var TENTHS_LESS_THAN_HUNDRED = [
     'zero', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'
 ];
 
+
 /**
  * Converts an integer into words.
  * If number is decimal, the decimals will be removed.
@@ -48,9 +49,9 @@ function toWords(number: number | string, asOrdinal?: boolean): string {
     return asOrdinal ? makeOrdinal(words) : words;
 }
 
-function generateWords(number: number) {
-    var remainder: number, word: (string | undefined),
-        words: ((string | undefined)[]) = arguments[1];
+function generateWords(number: number, words?: (string | undefined)[]) {
+    var remainder: number | undefined, word: (string | undefined);
+    remainder = remainder || 0;
 
     // We’re done
     if (number === 0) {
@@ -107,7 +108,7 @@ function generateWords(number: number) {
 
     words.push(word);
 
-    return generateWords(number);
+    return generateWords(remainder, words);
 }
 
 module.exports = toWords;
