@@ -22,6 +22,7 @@ var TENTHS_LESS_THAN_HUNDRED = [
     'zero', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'
 ];
 
+
 /**
  * Converts an integer into words.
  * If number is decimal, the decimals will be removed.
@@ -30,8 +31,8 @@ var TENTHS_LESS_THAN_HUNDRED = [
  * @param {boolean} [asOrdinal] - Deprecated, use toWordsOrdinal() instead!
  * @returns {string}
  */
-function toWords(number: number, asOrdinal: boolean): (string | boolean) {
-    var words;
+function toWords(number: number | string, asOrdinal?: boolean): string {
+    var words: string;
     var num = parseInt(String(number), 10);
 
     if (!isFinite(num)) {
@@ -48,9 +49,8 @@ function toWords(number: number, asOrdinal: boolean): (string | boolean) {
     return asOrdinal ? makeOrdinal(words) : words;
 }
 
-function generateWords(number: number) {
-    var remainder, word,
-        words = arguments[1];
+function generateWords(number: number, words?: (string | undefined)[]) {
+    var remainder: number | undefined = 0, word: (string | undefined);
 
     // We’re done
     if (number === 0) {
@@ -106,7 +106,8 @@ function generateWords(number: number) {
     }
 
     words.push(word);
-    return generateWords(words);
+
+    return generateWords(remainder, words);
 }
 
 module.exports = toWords;
