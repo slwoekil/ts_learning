@@ -11,7 +11,7 @@ var ONE_MILLION = 1000000;
 var ONE_BILLION = 1000000000;           //         1.000.000.000 (9)
 var ONE_TRILLION = 1000000000000;       //     1.000.000.000.000 (12)
 var ONE_QUADRILLION = 1000000000000000; // 1.000.000.000.000.000 (15)
-var MAX = 900719925474099;             // 9.007.199.254.740.992 (15)
+var MAX = 9007199254740992;             // 9.007.199.254.740.992 (15)
 
 var LESS_THAN_TWENTY = [
     'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
@@ -32,7 +32,7 @@ var TENTHS_LESS_THAN_HUNDRED = [
  * @returns {string}
  */
 function toWords(number: number | string, asOrdinal?: boolean): string {
-    var words;
+    var words: string;
     var num = parseInt(String(number), 10);
 
     if (!isFinite(num)) {
@@ -50,8 +50,7 @@ function toWords(number: number | string, asOrdinal?: boolean): string {
 }
 
 function generateWords(number: number, words?: (string | undefined)[]) {
-    var remainder: number | undefined, word: (string | undefined);
-    remainder = remainder || 0;
+    var remainder: number | undefined = 0, word: (string | undefined);
 
     // We’re done
     if (number === 0) {
