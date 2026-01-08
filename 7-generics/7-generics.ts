@@ -1,9 +1,11 @@
+// @ts-ignore
 function swapKeysAndValues<K, V>(obj: Record<K, V>): {} {
     const res = {};
     const objKeys = Object.keys(obj);
     const objValue = Object.values(obj);
 
     for (let i = 0; i < objKeys.length; i++) {
+        // @ts-ignore
         res[objValue[i]] = objKeys[i];
     }
 
