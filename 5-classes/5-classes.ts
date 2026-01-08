@@ -44,6 +44,7 @@ class Map {
         const index = this.hash(key);
         if (this.buckets[index] && this.buckets[index].length > 0) {
             for (let i = 0; i < this.buckets[index].length; i++) {
+                // @ts-ignore
                 if (this.buckets[index][i].key === key) {
                     this.buckets[index].splice(i, 1);
                     return true;
